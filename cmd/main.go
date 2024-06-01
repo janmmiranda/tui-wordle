@@ -1,7 +1,15 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+
+	tea "github.com/charmbracelet/bubbletea"
+	"github.com/janmmiranda/tui-wordle/internal/tui"
+)
 
 func main() {
-	fmt.Println("hello world")
+	p := tea.NewProgram(tui.InitialWordleModel())
+	if _, err := p.Run(); err != nil {
+		fmt.Printf("Error: %v\n", err)
+	}
 }
